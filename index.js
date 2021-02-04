@@ -6,5 +6,10 @@ var app = new Vue({
       message: "Hello from JavaScript!",
       name: "Dani"
     };
+  },
+  methods: {
+    changeMessage: function() {
+      this.message = "Cool....";
+    }
   }
 });
