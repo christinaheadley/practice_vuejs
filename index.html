@@ -7,6 +7,12 @@
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="index.js" defer></script>
   </head>
+  <style>
+    .disabled {
+      color: LightGrey;
+      transition: color 1s ease;
+    }
+  </style>
   <body>
     <div id="app">
       <!-- Vue works here -->
@@ -16,7 +22,7 @@
       <input type="text" v-model="name" />
       <div>
         <button v-on:click="showInfo = !showInfo">Toggle Info</button>
-        <p v-if="showInfo">Extra Information</p>
+        <p v-bind:class="{ disabled: showInfo }">Extra Information</p>
       </div>
     </div>
   </body>
