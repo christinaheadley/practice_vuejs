@@ -14,6 +14,10 @@
       <h1>{{ name }}</h1>
       <button v-on:click="changeMessage()">Click me</button>
       <input type="text" v-model="name" />
+      <div>
+        <button v-on:click="showInfo = !showInfo">Toggle Info</button>
+        <p v-if="showInfo">Extra Information</p>
+      </div>
     </div>
   </body>
 </html>
