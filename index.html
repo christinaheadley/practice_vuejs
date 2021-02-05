@@ -32,8 +32,13 @@
       <button v-on:click="addNewFruit">Add new fruit</button>
 
       <div>
-        <button v-on:click="loadTodos">Load todos</button><br />
-        {{ todos }}
+        Title: <input type="text" v-model="title" />
+        <button v-on:click="addNewTodo">Create a new todo</button>
+      </div>
+
+      <div v-for="todo in todos">
+        <h4>Title: {{ todo.title }}</h4>
+        <p>Completed: {{ todo.completed }}</p>
       </div>
     </div>
   </body>

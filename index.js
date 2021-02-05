@@ -10,8 +10,16 @@ var app = new Vue({
       showInfo: false,
       fruits: ["apple", "banana", "cantaloupe"],
       newFruit: "",
-      todos: []
+      todos: [],
+      title: ""
     };
+  },
+  created: function() {
+    axios.get('https://jsonplaceholder.typicode.com/todos')
+    .then(response => {
+      console.log(response.data);
+      this.todos = response.data;
+    });
   },
   methods: {
     changeMessage: function() {
@@ -21,15 +29,23 @@ var app = new Vue({
       this.fruits.push(this.newFruit);
       this.newFruit = "";
     },
-    loadTodos: function() {
-      axios.get('https://jsonplaceholder.typicode.com/todos')
+    addNewTodo: function() {
+      var params = {
+        userId: 1,
+        title: this.title,
+        completed: false
+      };
+      // create action
+      axios.post("https://jsonplaceholder.typicode.com/todos", params)
       .then(response => {
         console.log(response.data);
-        this.todos = response.data;
+        this.todos.unshift(response.data);
+        this.title = "";
       });
     }
   }
 });
 
 // response = HTTP.get("https://jsonplaceholder.typicode.com/todos")
-// response.parse
+// puts response.parse
+// HTTP.post("https://jsonplaceholder.typicode.com/todos", body: {})
